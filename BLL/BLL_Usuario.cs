@@ -10,6 +10,30 @@ namespace BLl
     public class BLL_Usuario
     {
 
+        public static List<USUARIO> LoginId(string P_Cadena, clsUsuario Usuario)
+        {
+            List<USUARIO> lstUsuario = new List<USUARIO>();
+
+            var dpParametros = new
+            {
+                    Usuario = Usuario.Usuario,
+                    Contra = Usuario.Contra
+            };
+
+            DataTable Dt = Contexto.Funcion_StoreDB(P_Cadena, "spLoginId", dpParametros);
+
+            lstUsuario = (from item in Dt.AsEnumerable()
+                          select new USUARIO
+                          {
+                              IdUsuario = item.Field<int>("IdUsuario")
+                          }
+                            ).ToList<USUARIO>();
+
+            return lstUsuario;
+
+        }
+
+
         public static List<USUARIO> ExtraerTodo(string P_Cadena)
         {
             List<USUARIO> lstUsuario = new List<USUARIO>();

@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Models;
-using BLL;
 using BLl;
 
 namespace CRUDReact.Controllers
@@ -16,6 +15,27 @@ namespace CRUDReact.Controllers
         public UsuarioController(IConfiguration Config)
         {
             Cadena = Config.GetConnectionString("PROD");
+        }
+
+
+        [HttpGet]
+        [Route("LoginId")]
+        public IActionResult ListaId([FromBody] clsUsuario Usuario)
+        {
+            List<USUARIO> lstUsuario = BLL_Usuario.LoginId(Cadena, Usuario);
+
+            Dictionary<string, int> IdUsuario = new Dictionary<string, int>();
+            IdUsuario.Add("IdUsuario", lstUsuario[0].IdUsuario);
+
+            if (lstUsuario.Count > 0)
+            {
+                return StatusCode(StatusCodes.Status200OK, IdUsuario);
+            }
+            else
+            {
+                return StatusCode(StatusCodes.Status400BadRequest, null);
+            }
+
         }
 
         [HttpGet]
@@ -34,6 +54,7 @@ namespace CRUDReact.Controllers
             }
 
         }
+
 
         [HttpPost]
         [Route("Guardar")]
