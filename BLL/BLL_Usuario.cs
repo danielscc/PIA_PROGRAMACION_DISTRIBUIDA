@@ -16,7 +16,7 @@ namespace BLl
 
             var dpParametros = new
             {
-                P_Accion = 1,
+                Accion = 1,
             };
 
             DataTable Dt = Contexto.Funcion_StoreDB(P_Cadena, "spReadAllUsuario", dpParametros);
@@ -31,7 +31,7 @@ namespace BLl
                                 Usuario = item.Field<string>("Usuario"),
                                 Contra = item.Field<string>("Contra"),
                                 IsActivo = item.Field<bool>("IsActivo"),
-                                FecRegistro = item.Field<string>("FecRegistro")
+                                FecRegistro = item.Field<DateTime>("FecRegistro")
                             }
                             ).ToList<USUARIO>();
 

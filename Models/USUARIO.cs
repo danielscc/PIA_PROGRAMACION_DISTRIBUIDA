@@ -9,7 +9,7 @@
         public string Usuario { get; set; }
         public string Contra { get; set; }
         public bool IsActivo { get; set; }
-        public string FecRegistro { get; set; }
+        public DateTime FecRegistro { get; set; }
 
     }
 }
