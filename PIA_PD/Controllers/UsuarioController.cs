@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Models;
-using BLl;
+using BLL;
 
 namespace CRUDReact.Controllers
 {

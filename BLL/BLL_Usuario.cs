@@ -5,7 +5,7 @@ using Models;
 using DAL;
 using System.Diagnostics.Contracts;
 
-namespace BLl
+namespace BLL
 {
     public class BLL_Usuario
     {
