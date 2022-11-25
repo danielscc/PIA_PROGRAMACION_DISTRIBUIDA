@@ -34,7 +34,7 @@ namespace BLL
         }
 
 
-        public static List<USUARIO> Read(string P_Cadena)
+        public static List<USUARIO> ReadUsuario(string P_Cadena)
         {
             List<USUARIO> lstUsuario = new List<USUARIO>();
 

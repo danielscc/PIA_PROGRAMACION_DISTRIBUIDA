@@ -7,7 +7,8 @@ const target = env.ASPNETCORE_HTTPS_PORT ? `https://localhost:${env.ASPNETCORE_H
 //EN ESTA PARTE CONECTAMOS LA API CON EL CONTROLADOR
 const context = [
     "/weatherforecast",
-    "/api/usuario"
+    "/api/usuario",
+    "/api/movimiento"
 ];
 
 

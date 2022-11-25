@@ -42,7 +42,7 @@ namespace CRUDReact.Controllers
         [Route("Read")]
         public IActionResult Read()
         {
-            List<USUARIO> lstUsuario = BLL_Usuario.Read(Cadena);
+            List<USUARIO> lstUsuario = BLL_Usuario.ReadUsuario(Cadena);
 
             if (lstUsuario.Count > 0)
             {
