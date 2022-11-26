@@ -18,7 +18,7 @@ namespace CRUDReact.Controllers
         }
 
 
-        [HttpGet]
+        [HttpPost]
         [Route("LoginId")]
         public IActionResult ListaId([FromBody] clsUsuario Usuario)
         {
