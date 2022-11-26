@@ -9,7 +9,7 @@
         public decimal CostoTotal { get; set; }
         public decimal Pago { get; set; }
         public decimal Cambio { get; set; }
-        public string FecRegistro { get; set; }
+        public DateTime FecRegistro { get; set; }
         public int IdUsuario { get; set; }
     }
 }

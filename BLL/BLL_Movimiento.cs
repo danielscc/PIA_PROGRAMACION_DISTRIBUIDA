@@ -19,16 +19,17 @@ namespace BLL
             DataTable Dt = Contexto.Funcion_StoreDB(P_Cadena, "spReadMovimiento", dpParametros);
 
             lstMovimiento = (from item in Dt.AsEnumerable()
-                        select new MOVIMIENTO
-                        {
-                            IdTipoMovimiento = item.Field<int>("IdTipoMovimiento"),
-                            CantDolares = item.Field<int>("CantDolares"),
-                            PUnitario = item.Field<decimal>("PUnitario"),
-                            CostoTotal = item.Field<decimal>("CostoTotal"), 
-                            Pago = item.Field<decimal>("Pago"),
-                            Cambio = item.Field<decimal>("Cambio"),
-                            IdUsuario = item.Field<int>("IdUsuario")
-                        }
+                             select new MOVIMIENTO
+                             {
+                                 IdTipoMovimiento = item.Field<int>("IdTipoMovimiento"),
+                                 CantDolares = item.Field<int>("CantDolares"),
+                                 PUnitario = item.Field<decimal>("PUnitario"),
+                                 CostoTotal = item.Field<decimal>("CostoTotal"),
+                                 Pago = item.Field<decimal>("Pago"),
+                                 Cambio = item.Field<decimal>("Cambio"),
+                                 FecRegistro = item.Field<DateTime>("FecRegistro"),
+                                 IdUsuario = item.Field<int>("IdUsuario")
+                             }
                             ).ToList<MOVIMIENTO>();
             return lstMovimiento;
 
@@ -62,6 +63,6 @@ namespace BLL
                 lstValidacion.Add(e.Message);
             }
             return lstValidacion;
-        }    
+        }
     }
 }

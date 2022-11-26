@@ -1,9 +1,7 @@
 ﻿using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
 using Models;
 using DAL;
-using System.Diagnostics.Contracts;
 
 namespace BLL
 {
@@ -23,10 +21,10 @@ namespace BLL
             DataTable Dt = Contexto.Funcion_StoreDB(P_Cadena, "spLoginId", dpParametros);
 
             lstUsuario = (from item in Dt.AsEnumerable()
-                          select new USUARIO
-                          {
-                              IdUsuario = item.Field<int>("IdUsuario")
-                          }
+                        select new USUARIO
+                        {
+                            IdUsuario = item.Field<int>("IdUsuario")
+                        }
                             ).ToList<USUARIO>();
 
             return lstUsuario;
