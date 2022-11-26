@@ -5,7 +5,7 @@ using Models;
 using DAL;
 using System.Diagnostics.Contracts;
 
-namespace BLl
+namespace BLL
 {
     public class BLL_Usuario
     {
@@ -34,7 +34,7 @@ namespace BLl
         }
 
 
-        public static List<USUARIO> ExtraerTodo(string P_Cadena)
+        public static List<USUARIO> ReadUsuario(string P_Cadena)
         {
             List<USUARIO> lstUsuario = new List<USUARIO>();
 
@@ -43,7 +43,7 @@ namespace BLl
                 Accion = 1,
             };
 
-            DataTable Dt = Contexto.Funcion_StoreDB(P_Cadena, "spReadAllUsuario", dpParametros);
+            DataTable Dt = Contexto.Funcion_StoreDB(P_Cadena, "spReadUsuario", dpParametros);
 
             lstUsuario = (from item in Dt.AsEnumerable()
                             select new USUARIO
@@ -64,7 +64,7 @@ namespace BLl
         }
 
 
-        public static List<string> GuardarUsuario(string P_Cadena, clsUsuario Usuario)
+        public static List<string> CreateUsuario(string P_Cadena, clsUsuario Usuario)
         {
             List<string> lstValidacion = new List<string>();
 
@@ -92,7 +92,7 @@ namespace BLl
             return lstValidacion;
         }
 
-        public static List<string> EditarUsuario(string P_Cadena, USUARIO Usuario)
+        public static List<string> UpdateUsuario(string P_Cadena, USUARIO Usuario)
         {
             List<string> lstValidacion = new List<string>();
 
@@ -125,7 +125,7 @@ namespace BLl
         }
 
         /*borrado logico*/
-        public static List<string> EliminarUsuario(string P_Cadena, USUARIO Usuario)
+        public static List<string> DeleteUsuario(string P_Cadena, USUARIO Usuario)
         {
             List<string> lstValidacion = new List<string>();
 

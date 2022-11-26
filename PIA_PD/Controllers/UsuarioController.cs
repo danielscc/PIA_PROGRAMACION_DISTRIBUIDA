@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Models;
-using BLl;
+using BLL;
 
 namespace CRUDReact.Controllers
 {
@@ -39,10 +39,10 @@ namespace CRUDReact.Controllers
         }
 
         [HttpGet]
-        [Route("Lista")]
-        public IActionResult Lista()
+        [Route("Read")]
+        public IActionResult Read()
         {
-            List<USUARIO> lstUsuario = BLL_Usuario.ExtraerTodo(Cadena);
+            List<USUARIO> lstUsuario = BLL_Usuario.ReadUsuario(Cadena);
 
             if (lstUsuario.Count > 0)
             {
@@ -57,10 +57,10 @@ namespace CRUDReact.Controllers
 
 
         [HttpPost]
-        [Route("Guardar")]
-        public IActionResult Guardar([FromBody] clsUsuario Usuario)
+        [Route("Create")]
+        public IActionResult Create([FromBody] clsUsuario Usuario)
         {
-            List<string> lstValidacion = BLL_Usuario.GuardarUsuario(Cadena, Usuario);
+            List<string> lstValidacion = BLL_Usuario.CreateUsuario(Cadena, Usuario);
 
             if (lstValidacion[0] == "00")
             {
@@ -74,11 +74,11 @@ namespace CRUDReact.Controllers
         }
 
         [HttpPut]
-        [Route("Editar")]
-        public IActionResult Editar([FromBody] USUARIO Usuario)
+        [Route("Update")]
+        public IActionResult Update([FromBody] USUARIO Usuario)
         {
 
-            List<string> lstValidacion = BLL_Usuario.EditarUsuario(Cadena, Usuario);
+            List<string> lstValidacion = BLL_Usuario.UpdateUsuario(Cadena, Usuario);
 
 
             if (lstValidacion[0] == "00")
@@ -93,11 +93,11 @@ namespace CRUDReact.Controllers
 
 
         [HttpPut]
-        [Route("Eliminar")]
-        public IActionResult Eliminar([FromBody] USUARIO Usuario)
+        [Route("Delete")]
+        public IActionResult Delete([FromBody] USUARIO Usuario)
         {
 
-            List<string> lstValidacion = BLL_Usuario.EliminarUsuario(Cadena, Usuario);
+            List<string> lstValidacion = BLL_Usuario.DeleteUsuario(Cadena, Usuario);
 
 
             if (lstValidacion[0] == "00")
