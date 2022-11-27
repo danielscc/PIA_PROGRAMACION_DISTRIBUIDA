@@ -34,7 +34,6 @@ namespace CRUDReact.Controllers
 
         }
 
-
         [HttpPost]
         [Route("Create")]
         public IActionResult Create([FromBody] clsMovimiento Movimiento)

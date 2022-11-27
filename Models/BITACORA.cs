@@ -6,6 +6,6 @@
         public int IdTipoMovimiento { get; set; }
         public decimal Monto { get; set; }
         public int IdUsuario { get; set; }
-        public string FecRegistro { get; set; }
+        public DateTime FecRegistro { get; set; }
     }
 }
