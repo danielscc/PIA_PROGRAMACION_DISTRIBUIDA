@@ -18,5 +18,8 @@ export default{
         //         Contra: password
         //     })
         // })
+    },
+    listaUsuarios(){
+        return axios.get(ENDPOINT_PATH+'/Read');
     }
 }
