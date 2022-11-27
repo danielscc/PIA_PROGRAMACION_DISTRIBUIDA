@@ -42,8 +42,7 @@ namespace BLL
                 {
                     IdTipoMovimiento = Bitacora.IdTipoMovimiento,
                     Monto = Bitacora.Monto,
-                    IdUsuario = Bitacora.IdUsuario,
-                    FecRegistro = Bitacora.FecRegistro
+                    IdUsuario = Bitacora.IdUsuario
                 };
 
                 Contexto.Procedimiento_StoreDB(P_Cadena, "spCreateBitacora", dpParametros);
