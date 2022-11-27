@@ -9,6 +9,7 @@ namespace Models
         public decimal Monto { get; set; }
         public int IdUsuario { get; set; }
         public string FecRegistro { get; set; }
+        public string NombreCompleto { get; set; }
 
     }
 }

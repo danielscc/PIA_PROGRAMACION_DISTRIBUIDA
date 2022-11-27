@@ -33,6 +33,7 @@ export default class TablaBitacora extends Component{
                             <th scope="col">Monto</th>
                             <th scope="col">Fecha de registro</th>
                             <th scope="col">IdUsuario</th>
+                            <th scope="col">Nombre del usuario</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -52,6 +53,7 @@ const CrearRegistro = (props) => {
                 <td>{bitacora.monto}</td>
                 <td>{bitacora.fecRegistro}</td>
                 <td>{bitacora.idUsuario}</td>
+                <td>{bitacora.nombreCompleto}</td>
                 <td><Button className='bg-danger'>Borrar</Button><Button className='bg-primary'>Editar</Button></td>
             </tr>
         })

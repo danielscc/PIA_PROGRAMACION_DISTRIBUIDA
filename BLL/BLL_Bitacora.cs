@@ -25,7 +25,8 @@ namespace BLL
                                 IdTipoMovimiento = item.Field<int>("IdTipoMovimiento"),
                                 Monto = item.Field<decimal>("Monto"),
                                 FecRegistro = item.Field<DateTime>("FecRegistro"),
-                                IdUsuario = item.Field<int>("IdUsuario")
+                                IdUsuario = item.Field<int>("IdUsuario"),
+                                NombreCompleto = item.Field<string>("NombreCompleto")
                             }
                             ).ToList<BITACORA>();
             return lstBitacora;

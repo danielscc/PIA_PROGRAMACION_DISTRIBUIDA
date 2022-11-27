@@ -28,7 +28,8 @@ namespace BLL
                                  Pago = item.Field<decimal>("Pago"),
                                  Cambio = item.Field<decimal>("Cambio"),
                                  FecRegistro = item.Field<DateTime>("FecRegistro"),
-                                 IdUsuario = item.Field<int>("IdUsuario")
+                                 IdUsuario = item.Field<int>("IdUsuario"),
+                                 NombreCompleto = item.Field<string>("NombreCompleto")
                              }
                             ).ToList<MOVIMIENTO>();
             return lstMovimiento;

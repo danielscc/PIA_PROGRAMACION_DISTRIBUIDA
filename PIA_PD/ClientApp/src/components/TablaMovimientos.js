@@ -37,6 +37,7 @@ export default class TablaMovimiento extends Component {
                             <th scope="col">Cambio</th>
                             <th scope="col">Fecha de registro</th>
                             <th scope="col">IdUsuario</th>
+                            <th scope="col">Nombre de usuario</th>
                             <th scope="col">Acciones</th>
                         </tr>
                     </thead>
@@ -62,6 +63,7 @@ const CrearRegistro = (props) => {
                 <td>{movimiento.cambio}</td>
                 <td>{movimiento.fecRegistro}</td>
                 <td>{movimiento.idUsuario}</td>
+                <td>{movimiento.nombreCompleto}</td>
                 <td><Button className='bg-danger'>Borrar</Button><Button className='bg-primary'>Editar</Button></td>
             </tr>
         })

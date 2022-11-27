@@ -11,5 +11,7 @@
         public decimal Cambio { get; set; }
         public DateTime FecRegistro { get; set; }
         public int IdUsuario { get; set; }
+        public string NombreCompleto { get; set; }
+
     }
 }
