@@ -26,6 +26,11 @@ export default class TablaBitacora extends Component{
         return(
             <div>
                 <h2>Tabla bitacora</h2>
+
+                <Button color="primary">
+                    Agregar a la bitacora
+                </Button>
+
                 <table className="table table-striped">
                     <thead>
                         <tr>
@@ -54,7 +59,7 @@ const CrearRegistro = (props) => {
                 <td>{bitacora.fecRegistro}</td>
                 <td>{bitacora.idUsuario}</td>
                 <td>{bitacora.nombreCompleto}</td>
-                <td><Button className='bg-danger'>Borrar</Button><Button className='bg-primary'>Editar</Button></td>
+                <td><Button className='bg-primary'>Editar</Button></td>
             </tr>
         })
     )
