@@ -95,7 +95,7 @@ class CrearRegistro extends Component{
                 return <tr key={bitacora.idBitacora}>
                     <td>{(bitacora.idTipoMovimiento == 1) ? 'Compra' : 'Venta' }</td>
                     <td>{bitacora.monto}</td>
-                    <td>{bitacora.fecRegistro}</td>
+                    <td>{new Date(bitacora.fecRegistro).toLocaleDateString()}</td>
                     <td>{bitacora.idUsuario}</td>
                     <td>{bitacora.nombreCompleto}</td>
                     <td><Button onClick={()=>this.props.editar(bitacora)} className='bg-primary'>Editar</Button></td>

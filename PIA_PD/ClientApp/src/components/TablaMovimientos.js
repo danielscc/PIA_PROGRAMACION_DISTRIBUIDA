@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import movimientoControl from '../logic/Movimiento';
 import {Modal, ModalHeader, ModalFooter, ModalBody, Button } from 'reactstrap';
-import FormUser from '../partials/FormMovimiento';
+import FormMovimiento from '../partials/FormMovimiento';
 import controlMovimiento from '../logic/Movimiento';
 
 export default class TablaMovimiento extends Component {
@@ -35,7 +35,16 @@ export default class TablaMovimiento extends Component {
                 alert(error);
             });
         }
-
+        this.registrarMovimiento = () => {
+            movimientoControl.registrarMovimiento(this.state.Form).then(response => {
+                console.log(response);
+                alert("Movimiento existoso");
+                window.location.reload();
+            }).catch(error=>{
+                console.log(error);
+                alert("Error al registrar");
+            });
+        }
         // Funciones para abrir y cerrar modales
         this.abrirModalEditar = (movimiento)=>{
             this.setState({Form:movimiento});
@@ -83,7 +92,7 @@ export default class TablaMovimiento extends Component {
                 <Modal isOpen={this.state.modalCrear}>
                     <ModalHeader>Editar Movimiento</ModalHeader>
                     <ModalBody>
-                        <FormUser/>
+                        <FormMovimiento/>
                     </ModalBody>
                     <ModalFooter>
                     <Button color="secondary" onClick={this.abrirModalCrear}>
@@ -97,20 +106,25 @@ export default class TablaMovimiento extends Component {
 }
 
 // Componentes necesarios
-const CrearRegistro = (props) => {
-    return (
-        props.Lista.map(movimiento => {
-            return <tr key={movimiento.idMovimiento}>
-                <td>{(movimiento.idTipoMovimiento == 1) ? 'Compra' : 'Venta'}</td>
-                <td>{movimiento.cantDolares}</td>
-                <td>{movimiento.pUnitario}</td>
-                <td>{movimiento.costoTotal}</td>
-                <td>{movimiento.pago}</td>
-                <td>{movimiento.cambio}</td>
-                <td>{movimiento.fecRegistro}</td>
-                <td>{movimiento.idUsuario}</td>
-                <td>{movimiento.nombreCompleto}</td>
-            </tr>
-        })
-    )
+class CrearRegistro extends Component{
+    constructor(props){
+        super(props);
+    }
+    render(){
+        return (
+            this.props.Lista.map(movimiento => {
+                return <tr key={movimiento.idMovimiento}>
+                    <td>{(movimiento.idTipoMovimiento == 1) ? 'Compra' : 'Venta'}</td>
+                    <td>{movimiento.cantDolares}</td>
+                    <td>{movimiento.pUnitario}</td>
+                    <td>{movimiento.costoTotal}</td>
+                    <td>{movimiento.pago}</td>
+                    <td>{movimiento.cambio}</td>
+                    <td>{movimiento.fecRegistro}</td>
+                    <td>{movimiento.idUsuario}</td>
+                    <td>{movimiento.nombreCompleto}</td>
+                </tr>
+            })
+        )
+    }
 }

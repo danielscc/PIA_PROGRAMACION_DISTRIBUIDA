@@ -9,7 +9,7 @@ export default class FormBitacora extends Component{
         this.state = {
             Form :{
                 idBitacora : 0,
-                idTipoMovimiento : 0,
+                idTipoMovimiento : 1,
                 monto : 0
             }
         }
@@ -38,6 +38,7 @@ export default class FormBitacora extends Component{
         }
         this.guardar = ()=>{
             console.log(this.state.Form);
+            console.log(this.state.Form.idTipoMovimiento);
             if(this.state.Form.idBitacora == 0){
                 this.agregarBitacora();
             }else{
