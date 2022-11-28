@@ -1,13 +1,21 @@
 import React, { Component } from 'react';
 import bitacoraControl from '../logic/Bitacora';
-import { Button } from 'reactstrap';
+import {Modal, ModalHeader, ModalFooter, ModalBody, Button } from 'reactstrap';
+import FormBitacora from '../partials/FormBitacora';
 
 export default class TablaBitacora extends Component{
     static displayName = TablaBitacora.name;
     constructor (props) {
         super(props);
         this.state = {
-            Lista: []
+            Lista: [],
+            Form :{
+                idBitacora : 0,
+                idTipoMovimiento : 0,
+                monto : 0
+            },
+            modalCrear : false,
+            modalEditar : false,
         }
         this.cargarDatos = () => {
             bitacoraControl.listaBitacoras().then(response => {
@@ -16,6 +24,13 @@ export default class TablaBitacora extends Component{
             }).catch(error => {
                 alert(error);
             });
+        }
+        this.abrirModalCrear = ()=>{
+            this.setState({modalCrear : (this.state.modalCrear == false)?true:false});
+        }
+        this.abrirModalEditar = (bitacora)=>{
+            this.setState({Form:bitacora});
+            this.setState({modalEditar : (this.state.modalEditar == false)?true:false});
         }
     }
     componentDidMount() {
@@ -26,6 +41,9 @@ export default class TablaBitacora extends Component{
         return(
             <div>
                 <h2>Tabla bitacora</h2>
+                <Button color="primary" onClick={this.abrirModalCrear}>
+                    Crear usuario
+                </Button>
                 <table className="table table-striped">
                     <thead>
                         <tr>
@@ -37,25 +55,52 @@ export default class TablaBitacora extends Component{
                         </tr>
                     </thead>
                     <tbody>
-                        <CrearRegistro Lista={this.state.Lista} />
+                        <CrearRegistro Lista={this.state.Lista} editar={this.abrirModalEditar}/>
                     </tbody>
                 </table>
+                <Modal isOpen={this.state.modalCrear}>
+                    <ModalHeader>Agregar bitacora</ModalHeader>
+                    <ModalBody>
+                        <FormBitacora />
+                    </ModalBody>
+                    <ModalFooter>
+                    <Button color="secondary" onClick={this.abrirModalCrear}>
+                        Cancelar
+                    </Button>
+                    </ModalFooter>
+                </Modal>
+                <Modal isOpen={this.state.modalEditar}>
+                    <ModalHeader>Editar bitacora</ModalHeader>
+                    <ModalBody>
+                        <FormBitacora objeto={this.state.Form}/>
+                    </ModalBody>
+                    <ModalFooter>
+                    <Button color="secondary" onClick={this.abrirModalEditar}>
+                        Cancelar
+                    </Button>
+                    </ModalFooter>
+                </Modal>
             </div>
         );
     }
 }
 // Componentes necesarios
-const CrearRegistro = (props) => {
-    return (
-        props.Lista.map(bitacora => {
-            return <tr key={bitacora.idBitacora}>
-                <td>{(bitacora.idTipoMovimiento == 1) ? 'Compra' : 'Venta' }</td>
-                <td>{bitacora.monto}</td>
-                <td>{bitacora.fecRegistro}</td>
-                <td>{bitacora.idUsuario}</td>
-                <td>{bitacora.nombreCompleto}</td>
-                <td><Button className='bg-danger'>Borrar</Button><Button className='bg-primary'>Editar</Button></td>
-            </tr>
-        })
-    )
+class CrearRegistro extends Component{
+    constructor(props){
+        super(props);
+    }
+    render(){
+        return (
+            this.props.Lista.map(bitacora => {
+                return <tr key={bitacora.idBitacora}>
+                    <td>{(bitacora.idTipoMovimiento == 1) ? 'Compra' : 'Venta' }</td>
+                    <td>{bitacora.monto}</td>
+                    <td>{bitacora.fecRegistro}</td>
+                    <td>{bitacora.idUsuario}</td>
+                    <td>{bitacora.nombreCompleto}</td>
+                    <td><Button onClick={()=>this.props.editar(bitacora)} className='bg-primary'>Editar</Button></td>
+                </tr>
+            })
+        )
+    }
 }

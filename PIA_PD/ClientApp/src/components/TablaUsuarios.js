@@ -48,6 +48,7 @@ export default class TablaUsuarios extends Component{
             controlUsuario.bajaUsuario(this.state.Form).then(response=>{
                 console.log(response);
                 alert("Usuario dado de baja correctamente");
+                window.location.reload();
             }).catch(error => {
                 console.log(error);
                 alert("Error al dar de baja");
@@ -81,7 +82,7 @@ export default class TablaUsuarios extends Component{
                     </tbody>
                 </table>
                 <Modal isOpen={this.state.modalCrear}>
-                    <ModalHeader>Editar usuario</ModalHeader>
+                    <ModalHeader>Crear usuario</ModalHeader>
                     <ModalBody>
                         <FormUser/>
                     </ModalBody>

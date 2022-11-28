@@ -23,6 +23,7 @@ export default class FormUser extends Component{
             controlUsuario.registrarUsuario(this.state.Form).then(response=>{
                 console.log(response);
                 alert("Usuario registrado correctamente");
+                window.location.reload();
             }).catch(error => {
                 console.log(error);
                 alert("Error al registrar");
@@ -32,6 +33,7 @@ export default class FormUser extends Component{
             controlUsuario.editarUsuario(this.state.Form).then(response=>{
                 console.log(response);
                 alert("Usuario registrado correctamente");
+                window.location.reload();
             }).catch(error => {
                 console.log(error);
                 alert("Error al registrar");
