@@ -21,5 +21,29 @@ export default{
     },
     listaUsuarios(){
         return axios.get(ENDPOINT_PATH+'/Read');
+    },
+    registrarUsuario(objeto){
+        return axios.post(ENDPOINT_PATH+'/Create', {
+            Nombre : objeto.nombre,
+            APaterno : objeto.aPaterno,
+            AMaterno : objeto.aMaterno,
+            Contra : objeto.contra,
+            Usuario : objeto.usuario
+        });
+    },
+    editarUsuario(objeto){
+        return axios.put(ENDPOINT_PATH+'/Update',{
+            IdUsuario : objeto.idUsuario,
+            Nombre : objeto.nombre,
+            APaterno : objeto.aPaterno,
+            AMaterno : objeto.aMaterno,
+            Contra : objeto.contra,
+            Usuario : objeto.usuario
+        });
+    },
+    bajaUsuario(objeto){
+        return axios.put(ENDPOINT_PATH+'/Delete', {
+            IdUsuario : objeto.idUsuario
+        });
     }
 }
