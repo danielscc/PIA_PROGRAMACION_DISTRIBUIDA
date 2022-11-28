@@ -1,14 +1,32 @@
 import React, { Component } from 'react';
 import movimientoControl from '../logic/Movimiento';
-import { Button } from 'reactstrap';
+import {Modal, ModalHeader, ModalFooter, ModalBody, Button } from 'reactstrap';
+import FormUser from '../partials/FormMovimiento';
+import controlMovimiento from '../logic/Movimiento';
 
 export default class TablaMovimiento extends Component {
     static displayName = TablaMovimiento.name;
     constructor(props) {
         super(props);
         this.state = {
-            Lista: []
+            Lista : [],
+            modalCrear : false,
+            modalEliminar : false,
+            modalEditar : false,
+            Form :{
+                // idMovimiento : 0,
+                idTipoMovimiento : 0,
+                cantDolares : 0.00,
+                pUnitario : 0.00,
+                costoTotal : 0.00,
+                pago : 0.00,
+                cambio : 0.00,
+                fecRegistro : "",
+                idUsuario : 0,
+                nombreCompleto : "",
+            }
         }
+        //peticion para cargar datos
         this.cargarDatos = () => {
             movimientoControl.listaMovimientos().then(response => {
                 console.log(response.data);
@@ -17,6 +35,20 @@ export default class TablaMovimiento extends Component {
                 alert(error);
             });
         }
+
+        // Funciones para abrir y cerrar modales
+        this.abrirModalEditar = (movimiento)=>{
+            this.setState({Form:movimiento});
+            this.setState({modalEditar : (this.state.modalEditar === false)?true:false});
+        }
+        this.abrirModalCrear = ()=>{
+            this.setState({modalCrear : (this.state.modalCrear === false)?true:false});
+        }
+        this.abrirModalEliminar = (movimiento)=>{
+            this.setState({Form:movimiento});
+            this.setState({modalEliminar : (this.state.modalEliminar === false)?true:false});
+        }
+
     }
     componentDidMount() {
         this.cargarDatos();
@@ -25,6 +57,9 @@ export default class TablaMovimiento extends Component {
     render() {
         return (
             <div>
+                <Button color="primary" onClick={this.abrirModalCrear}>
+                    Crear Movimiento
+                </Button>
                 <h2>Tabla Movimientos</h2>
                 <table className="table table-striped">
                     <thead>
@@ -38,13 +73,24 @@ export default class TablaMovimiento extends Component {
                             <th scope="col">Fecha de registro</th>
                             <th scope="col">IdUsuario</th>
                             <th scope="col">Nombre de usuario</th>
-                            <th scope="col">Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <CrearRegistro Lista={this.state.Lista} />
+                        <CrearRegistro Lista={this.state.Lista} editar={this.abrirModalCrear} />
                     </tbody>
                 </table>
+
+                <Modal isOpen={this.state.modalCrear}>
+                    <ModalHeader>Editar Movimiento</ModalHeader>
+                    <ModalBody>
+                        <FormUser/>
+                    </ModalBody>
+                    <ModalFooter>
+                    <Button color="secondary" onClick={this.abrirModalCrear}>
+                        Cancelar
+                    </Button>
+                    </ModalFooter>
+                </Modal>
             </div>
         );
     }
@@ -64,7 +110,6 @@ const CrearRegistro = (props) => {
                 <td>{movimiento.fecRegistro}</td>
                 <td>{movimiento.idUsuario}</td>
                 <td>{movimiento.nombreCompleto}</td>
-                <td><Button className='bg-danger'>Borrar</Button><Button className='bg-primary'>Editar</Button></td>
             </tr>
         })
     )
