@@ -90,8 +90,8 @@ export default class FormUser extends Component{
         return(
             <div>
                 <Form>
-                    <p>{this.state.montoCompra}</p>
-                    <p>{this.state.montoVenta}</p>
+                    <p>Precio de compra del dia de hoy: {this.state.montoCompra}</p>
+                    <p>Precio de venta del dia de hoy: {this.state.montoVenta}</p>
                     <FormGroup>
                     <Label for="idTipoMovimiento">Tipo de movimiento</Label>
                     <Input id="idTipoMovimiento" name="idTipoMovimiento" type="select" value={this.state.Form.idTipoMovimiento} onChange={this.handleChange}>
@@ -124,12 +124,14 @@ export default class FormUser extends Component{
                         <Input id="cambio" name="cambio" placeholder="" type="number"
                         value={this.state.Form.cambio} onChange={this.handleChange} disabled/>
                     </FormGroup>
-                    <Button onClick={this.calcularValores} className='bg-success'>
-                        Calcular
-                    </Button>
-                    <Button onClick={this.registrarMovimiento} className='bg-primary'>
-                        Guardar
-                    </Button>
+                    <div className='d-flex justify-content-center py-2'>
+                        <Button onClick={this.calcularValores} className='btn btn-primary me-4'>
+                            Calcular
+                        </Button>
+                        <Button onClick={this.registrarMovimiento} className='btn btn-success'>
+                            Guardar
+                        </Button>
+                    </div>
                 </Form>
             </div>
         );

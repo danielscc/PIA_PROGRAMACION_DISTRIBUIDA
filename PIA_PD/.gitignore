@@ -232,4 +232,4 @@ _Pvt_Extensions
 .fake/
 
 # appsettings
-.appsettings.json
+appsettings.json

@@ -1,4 +1,6 @@
 /* Provide sufficient contrast against white background */
+@import '~bootstrap-icons/font/bootstrap-icons';
+
 a {
   color: #0366d6;
 }
@@ -11,4 +13,64 @@ code {
   color: #fff;
   background-color: #1b6ec2;
   border-color: #1861ac;
+}
+
+/*TABLA */
+
+.table > :not(:first-child) {
+  border-top: 0;
+}
+
+.table-title {        
+	padding-bottom: 15px;
+	background: #435d7d;
+	color: #fff;
+	padding: 16px 30px;
+	min-width: 100%;
+	margin: -20px -25px 0px;
+	border-radius: 3px 3px 0 0;
+}
+
+.table-container {
+	min-width: 100%;
+	margin: 0px -25px 0px;
+}
+
+.table-title h2 {
+	margin: 5px 0 0;
+	font-size: 24px;
+}
+
+.table-title .btn {
+	color: #fff;
+	float: right;
+	font-size: 13px;
+	border: none;
+	min-width: 50px;
+	border-radius: 2px;
+	border: none;
+	outline: none !important;
+	margin-left: 10px;
+}
+
+.table-responsive {
+  margin: 30px 0;
+}
+.table-wrapper {
+background: #fff;
+padding: 20px 25px;
+border-radius: 3px;
+min-width: 1000px;
+box-shadow: 0 1px 1px rgba(0,0,0,.05);
+}
+
+.table-title .add-new {
+    float: right;
+    height: 30px;
+    font-weight: bold;
+    font-size: 12px;
+    text-shadow: none;
+    min-width: 100px;
+    border-radius: 50px;
+    line-height: 13px;
 }

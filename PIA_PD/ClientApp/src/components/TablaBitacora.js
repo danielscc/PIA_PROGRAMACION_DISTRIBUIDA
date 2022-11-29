@@ -26,11 +26,11 @@ export default class TablaBitacora extends Component{
             });
         }
         this.abrirModalCrear = ()=>{
-            this.setState({modalCrear : (this.state.modalCrear == false)?true:false});
+            this.setState({modalCrear : (this.state.modalCrear === false)?true:false});
         }
         this.abrirModalEditar = (bitacora)=>{
             this.setState({Form:bitacora});
-            this.setState({modalEditar : (this.state.modalEditar == false)?true:false});
+            this.setState({modalEditar : (this.state.modalEditar === false)?true:false});
         }
     }
     componentDidMount() {
@@ -40,31 +40,47 @@ export default class TablaBitacora extends Component{
     render(){
         return(
             <div>
-                <h2>Tabla bitacora</h2>
-                <Button color="primary" onClick={this.abrirModalCrear}>
-                    Crear usuario
-                </Button>
-                <table className="table table-striped">
-                    <thead>
-                        <tr>
-                            <th scope="col">Tipo Movimiento</th>
-                            <th scope="col">Monto</th>
-                            <th scope="col">Fecha de registro</th>
-                            <th scope="col">IdUsuario</th>
-                            <th scope="col">Nombre del usuario</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <CrearRegistro Lista={this.state.Lista} editar={this.abrirModalEditar}/>
-                    </tbody>
-                </table>
+                <div className="container text-center">
+                    <div class="table-responsive">
+                        <div className='table-wrapper'>
+                            <div className="table-title">
+                                <div className="row">
+                                    <div className="col-sm-8"><h2>Detalle de <b>Bitacora</b></h2></div>
+                                        <div className="col-sm-4">
+                                            <Button color="btn btn-success add-new" onClick={this.abrirModalCrear}>
+                                                Agregar precio del dia
+                                            </Button>
+                                        </div>
+                                </div>
+                            </div>
+                            <div className="table-container">
+                                <table className="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Tipo Movimiento</th>
+                                            <th scope="col">Monto</th>
+                                            <th scope="col">Fecha de registro</th>
+                                            <th scope="col">IdUsuario</th>
+                                            <th scope="col">Nombre del usuario</th>
+                                            <th scope="col">Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <CrearRegistro Lista={this.state.Lista} editar={this.abrirModalEditar}/>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <Modal isOpen={this.state.modalCrear}>
                     <ModalHeader>Agregar bitacora</ModalHeader>
                     <ModalBody>
                         <FormBitacora />
                     </ModalBody>
                     <ModalFooter>
-                    <Button color="secondary" onClick={this.abrirModalCrear}>
+                    <Button className='btn btn-danger' onClick={this.abrirModalCrear}>
                         Cancelar
                     </Button>
                     </ModalFooter>
@@ -75,7 +91,7 @@ export default class TablaBitacora extends Component{
                         <FormBitacora objeto={this.state.Form}/>
                     </ModalBody>
                     <ModalFooter>
-                    <Button color="secondary" onClick={this.abrirModalEditar}>
+                    <Button className="btn btn-danger" onClick={this.abrirModalEditar}>
                         Cancelar
                     </Button>
                     </ModalFooter>
@@ -93,12 +109,13 @@ class CrearRegistro extends Component{
         return (
             this.props.Lista.map(bitacora => {
                 return <tr key={bitacora.idBitacora}>
-                    <td>{(bitacora.idTipoMovimiento == 1) ? 'Compra' : 'Venta' }</td>
+                    <td>{(bitacora.idTipoMovimiento === 1) ? 'Compra' : 'Venta' }</td>
                     <td>{bitacora.monto}</td>
-                    <td>{new Date(bitacora.fecRegistro).toLocaleDateString()}</td>
+                    <td>{new Date(bitacora.fecRegistro).toLocaleDateString() + ' ' + 
+                    new Date(bitacora.fecRegistro).toLocaleTimeString()}</td>
                     <td>{bitacora.idUsuario}</td>
                     <td>{bitacora.nombreCompleto}</td>
-                    <td><Button onClick={()=>this.props.editar(bitacora)} className='bg-primary'>Editar</Button></td>
+                    <td><Button onClick={()=>this.props.editar(bitacora)} className='btn btn-primary'>Editar</Button></td>
                 </tr>
             })
         )

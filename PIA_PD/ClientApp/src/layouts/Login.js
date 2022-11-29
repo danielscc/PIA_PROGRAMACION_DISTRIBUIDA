@@ -31,42 +31,56 @@ export default class Login extends Component{
     }
     render(){
         return(
-            <div>
-                <h2>Login</h2>
-                <Form>
-                <FormGroup>
-                    <Label for="Usuario">
-                    Nombre de usuario
-                    </Label>
-                    <Input
-                    id="Usuario"
-                    name="Usuario"
-                    placeholder="juanitoP"
-                    type="text"
-                    value={this.state.Usuario}
-                    onChange={this.handleChange}
-                    />
-                </FormGroup>
-                <FormGroup>
-                    <Label for="Contra">
-                    Contraseña
-                    </Label>
-                    <Input
-                    id="Contra"
-                    name="Contra"
-                    placeholder="********"
-                    type="password"
-                    value={this.state.Contra}
-                    onChange={this.handleChange}
-                    />
-                </FormGroup>
-                <Button onClick={this.loginUsuario} className='bg-primary'>
-                    Registrarse
-                </Button>
-                </Form>
-                <div>{this.state.Usuario}</div>
-                <div>{this.state.Contra}</div>
-            </div>
+                <div>
+                    <section class="vh-100">
+                    <div class="container py-5 h-100">
+                        <div class="row d-flex justify-content-center align-items-center h-100">
+                        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                            <div class="card shadow-2-strong">
+                            <div class="card-body p-5 text-center">
+                                <h3 class="mb-5">Log in</h3>
+                                <Form>
+                                    <FormGroup>
+                                        <Input
+                                        id="Usuario"
+                                        name="Usuario"
+                                        placeholder="nombreusuario2131"
+                                        className="form-control form-control-lg mb-2"
+                                        type="text"
+                                        value={this.state.Usuario}
+                                        onChange={this.handleChange}
+                                        required
+                                        />
+                                        <Label for="Usuario" className="form-label">
+                                        Nombre de usuario
+                                        </Label>
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <Input
+                                        id="Contra"
+                                        name="Contra"
+                                        placeholder="********"
+                                        className="form-control form-control-lg mb-2"
+                                        type="password"
+                                        value={this.state.Contra}
+                                        onChange={this.handleChange}
+                                        required
+                                        />
+                                        <Label for="Contra" className="form-label">
+                                        Contraseña
+                                        </Label>
+                                    </FormGroup>
+                                    <Button onClick={this.loginUsuario}  className="btn btn-primary btn-lg btn-block">
+                                        Ingresar
+                                    </Button>
+                                    </Form>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    </section>
+                </div>
         );
     }
 }

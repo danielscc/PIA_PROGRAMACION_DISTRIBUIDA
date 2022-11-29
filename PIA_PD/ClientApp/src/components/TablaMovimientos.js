@@ -3,6 +3,7 @@ import movimientoControl from '../logic/Movimiento';
 import {Modal, ModalHeader, ModalFooter, ModalBody, Button } from 'reactstrap';
 import FormMovimiento from '../partials/FormMovimiento';
 import controlMovimiento from '../logic/Movimiento';
+import "bootstrap-icons/font/bootstrap-icons.css";
 
 export default class TablaMovimiento extends Component {
     static displayName = TablaMovimiento.name;
@@ -66,28 +67,55 @@ export default class TablaMovimiento extends Component {
     render() {
         return (
             <div>
-                <Button color="primary" onClick={this.abrirModalCrear}>
-                    Crear Movimiento
-                </Button>
-                <h2>Tabla Movimientos</h2>
-                <table className="table table-striped">
-                    <thead>
-                        <tr>
-                            <th scope="col">Tipo de movimiento</th>
-                            <th scope="col">Cantidad de dolares</th>
-                            <th scope="col">Precio unitario</th>
-                            <th scope="col">Costo Total</th>
-                            <th scope="col">Pago</th>
-                            <th scope="col">Cambio</th>
-                            <th scope="col">Fecha de registro</th>
-                            <th scope="col">IdUsuario</th>
-                            <th scope="col">Nombre de usuario</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <CrearRegistro Lista={this.state.Lista} editar={this.abrirModalCrear} />
-                    </tbody>
-                </table>
+
+
+                
+
+
+                <div className="container text-center">
+                    <div class ="table-responsive">
+                        <div class="table-wrapper">
+                            <div className="table-title">
+                                <div className="row">
+                                    <div className="col-sm-8"><h2>Detalle de los <b>movimientos</b></h2></div>
+                                        <div className="col-sm-4">
+                                            <Button className="btn btn-success add-new" onClick={this.abrirModalCrear}>
+                                                Crear Movimiento
+                                            </Button>
+                                        </div>
+                                </div>
+                            </div>
+
+
+                            <div className="table-container">
+                                <table className="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Tipo de movimiento</th>
+                                            <th scope="col">Cantidad de dolares</th>
+                                            <th scope="col">Precio unitario</th>
+                                            <th scope="col">Costo Total</th>
+                                            <th scope="col">Pago</th>
+                                            <th scope="col">Cambio</th>
+                                            <th scope="col">Fecha de registro</th>
+                                            <th scope="col">IdUsuario</th>
+                                            <th scope="col">Nombre de usuario</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <CrearRegistro Lista={this.state.Lista} editar={this.abrirModalCrear} />
+                                    </tbody>
+                                </table>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+
 
                 <Modal isOpen={this.state.modalCrear}>
                     <ModalHeader>Editar Movimiento</ModalHeader>
@@ -95,7 +123,7 @@ export default class TablaMovimiento extends Component {
                         <FormMovimiento/>
                     </ModalBody>
                     <ModalFooter>
-                    <Button color="secondary" onClick={this.abrirModalCrear}>
+                    <Button className='btn btn-danger' onClick={this.abrirModalCrear}>
                         Cancelar
                     </Button>
                     </ModalFooter>
@@ -120,7 +148,8 @@ class CrearRegistro extends Component{
                     <td>{movimiento.costoTotal}</td>
                     <td>{movimiento.pago}</td>
                     <td>{movimiento.cambio}</td>
-                    <td>{movimiento.fecRegistro}</td>
+                    <td>{new Date(movimiento.fecRegistro).toLocaleDateString() + ' ' + 
+                    new Date(movimiento.fecRegistro).toLocaleTimeString()}</td>
                     <td>{movimiento.idUsuario}</td>
                     <td>{movimiento.nombreCompleto}</td>
                 </tr>

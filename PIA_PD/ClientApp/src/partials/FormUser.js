@@ -80,9 +80,11 @@ export default class FormUser extends Component{
                         <Input id="usuario" name="usuario" placeholder="juanitoP" type="text"
                         value={this.state.Form.usuario} onChange={this.handleChange}/>
                     </FormGroup>
-                    <Button onClick={this.guardar} className='bg-primary'>
-                        Guardar
-                    </Button>
+                    <div className='d-flex justify-content-center py-2'>
+                        <Button onClick={this.guardar} className="btn btn-success">
+                            Guardar
+                        </Button>
+                    </div>
                 </Form>
             </div>
         );
