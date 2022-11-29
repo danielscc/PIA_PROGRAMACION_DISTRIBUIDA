@@ -3,7 +3,6 @@ import movimientoControl from '../logic/Movimiento';
 import {Modal, ModalHeader, ModalFooter, ModalBody, Button } from 'reactstrap';
 import FormMovimiento from '../partials/FormMovimiento';
 import controlMovimiento from '../logic/Movimiento';
-import "bootstrap-icons/font/bootstrap-icons.css";
 
 export default class TablaMovimiento extends Component {
     static displayName = TablaMovimiento.name;
