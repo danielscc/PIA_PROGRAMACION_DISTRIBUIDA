@@ -61,33 +61,48 @@ export default class TablaUsuarios extends Component{
     }
     render(){
         return(
-            <div>
-                <Button color="primary" onClick={this.abrirModalCrear}>
-                    Crear usuario
-                </Button>
-                <h2>Tabla usuarios</h2>
-                <table className="table table-striped">
-                    <thead>
-                        <tr>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Apellido</th>
-                        <th scope="col">Contraseña</th>
-                        <th scope="col">UserName</th>
-                        <th scope="col">Estatus</th>
-                        <th scope="col">Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <CrearRegistro Lista={this.state.Lista} borrar={this.abrirModalEliminar} editar={this.abrirModalEditar}/>
-                    </tbody>
-                </table>
+
+            <div className="container text-center">
+                <div class="table-responsive">
+                    <div className='table-wrapper'>
+                        <div className="table-title">
+                            <div className="row">
+                                <div className="col-sm-8"><h2>Detalle de <b>Usuario</b></h2></div>
+                                    <div className="col-sm-4">
+                                        <Button type="button" className="btn btn-success add-new" onClick={this.abrirModalCrear}>
+                                            Crear usuario
+                                        </Button>
+                                    </div>
+                            </div>
+                        </div>
+                        <div className="table-container">
+                            <table className="table table-bordered">
+                                <thead>
+                                    <tr>
+                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Apellido</th>
+                                    <th scope="col">Contraseña</th>
+                                    <th scope="col">UserName</th>
+                                    <th scope="col">Estatus</th>
+                                    <th scope="col">Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <CrearRegistro Lista={this.state.Lista} borrar={this.abrirModalEliminar} editar={this.abrirModalEditar}/>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+
                 <Modal isOpen={this.state.modalCrear}>
                     <ModalHeader>Crear usuario</ModalHeader>
                     <ModalBody>
                         <FormUser/>
                     </ModalBody>
                     <ModalFooter>
-                    <Button color="secondary" onClick={this.abrirModalCrear}>
+                    <Button className="btn btn-primary" onClick={this.abrirModalCrear}>
                         Cancelar
                     </Button>
                     </ModalFooter>
@@ -98,7 +113,7 @@ export default class TablaUsuarios extends Component{
                         <FormUser objeto={this.state.Form}/>
                     </ModalBody>
                     <ModalFooter>
-                    <Button color="secondary" onClick={this.abrirModalEditar}>
+                    <Button className="btn btn-primary" onClick={this.abrirModalEditar}>
                         Cancelar
                     </Button>
                     </ModalFooter>
@@ -111,15 +126,16 @@ export default class TablaUsuarios extends Component{
                         <p>{this.state.Form.idUsuario}</p>
                     </ModalBody>
                     <ModalFooter>
-                    <Button onClick={this.bajaUsuario} color="danger">
+                    <Button onClick={this.bajaUsuario} className='btn btn-danger'>
                         Borrar
                     </Button>{' '}
-                    <Button color="secondary" onClick={this.abrirModalEliminar}>
+                    <Button className='btn btn-primary' onClick={this.abrirModalEliminar}>
                         Cancelar
                     </Button>
                     </ModalFooter>
                 </Modal>
             </div>
+
         );
     }
 }
@@ -132,12 +148,12 @@ class CrearRegistro extends Component{
         return(
             this.props.Lista.map(usuario => {
                 return <tr key={usuario.idUsuario}>
-                            <th scope="row">{usuario.nombre}</th>
+                            <td>{usuario.nombre}</td>
                             <td>{usuario.aPaterno + " " + usuario.aMaterno}</td>
                             <td>{usuario.contra}</td>
                             <td>{usuario.usuario}</td>
                             <td>{(usuario.isActivo==true)?"Activo":"Inactivo"}</td>
-                            <td><Button onClick={()=>this.props.borrar(usuario)} className='bg-danger'>Borrar</Button><Button onClick={()=>this.props.editar(usuario)} className='bg-primary'>Editar</Button></td>
+                            <td><Button onClick={()=>this.props.borrar(usuario)} className='btn btn-danger me-2'>Borrar</Button><Button onClick={()=>this.props.editar(usuario)} className="btn btn-primary">Editar</Button></td>
                         </tr>
                         })
         )

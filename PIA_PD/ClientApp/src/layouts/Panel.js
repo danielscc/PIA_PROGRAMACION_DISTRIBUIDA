@@ -8,7 +8,6 @@ export default function Panel(){
     return(
         <div>
             <NavMenu />
-            <h2>Aqui va el panel principal</h2>
             <Routes>
                 <Route path='usuarios' element={<TablaUsuarios />} />
                 <Route path='bitacora' element={<TablaBitacora />} />

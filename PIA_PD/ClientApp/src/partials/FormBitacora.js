@@ -69,9 +69,11 @@ export default class FormBitacora extends Component{
                         <Input id="monto" name="monto" placeholder="23.51" type="number"
                         value={this.state.Form.monto} onChange={this.handleChange}/>
                     </FormGroup>
-                    <Button onClick={this.guardar} className='bg-primary'>
-                        Guardar
-                    </Button>
+                    <div className='d-flex justify-content-center py-2'> 
+                        <Button onClick={this.guardar} className='btn btn-success '>
+                            Guardar
+                        </Button>
+                    </div>
                 </Form>
             </div>
         );
