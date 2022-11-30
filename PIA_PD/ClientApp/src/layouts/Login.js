@@ -18,15 +18,27 @@ export default class Login extends Component{
             alert(Object.values(this.state))
         }
         this.loginUsuario = ()=>{
-            controlUsuario.login(this.state).then(response => {
-                console.log(response.data);
-                localStorage.IdUsuario = response.data.IdUsuario;
-                // localStorage.clear();
-                window.location.href = "/panel/usuarios";
-            }).catch(error => {
-                console.log(error);
-                alert("El usuario no existe");
-            });
+            if(this.state.Usuario.length <= 3 || this.state.Contra.length == 0){
+                alert("Caracteres insuficientes");
+            }else{
+                controlUsuario.login(this.state).then(response => {
+                    console.log(response.data)
+                    if(response.data.IdUsuario != 0 ){
+                        if(response.data.IsActivo == 1){
+                            localStorage.IdUsuario = response.data.IdUsuario;
+                            // localStorage.clear();
+                            window.location.href = "/panel/usuarios";
+                        }else{
+                            alert("Cuenta suspendida");
+                        }
+                    }else{
+                        alert("El usuario no existe");
+                    }
+                }).catch(error => {
+                    console.log(error);
+                    alert("Error al registrar");
+                });
+            }
         }
     }
     render(){

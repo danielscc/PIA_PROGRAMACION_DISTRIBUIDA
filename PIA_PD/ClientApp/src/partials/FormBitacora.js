@@ -2,6 +2,14 @@ import React, { Component } from 'react';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import controlBitacora from '../logic/Bitacora';
 
+function validarFormulario(objeto){
+    if(objeto.monto <= 0){
+        return false;
+    }else{
+        return true;
+    }
+}
+
 export default class FormBitacora extends Component{
     static displayName = FormBitacora.name;
     constructor (props) {
@@ -17,24 +25,34 @@ export default class FormBitacora extends Component{
             this.setState({Form:{...this.state.Form, [e.target.name]: e.target.value} })
         }
         this.agregarBitacora = ()=>{
-            controlBitacora.agregarBitacora(this.state.Form).then(response=>{
-                console.log(response);
-                alert("Agregado a bitacora correctamente");
-                window.location.reload();
-            }).catch(error => {
-                console.log(error);
-                alert("Error al agregar");
-            })
+            let validacion = validarFormulario(this.state.Form)
+            if(validacion == true){
+                controlBitacora.agregarBitacora(this.state.Form).then(response=>{
+                    console.log(response);
+                    alert("Agregado a bitacora correctamente");
+                    window.location.reload();
+                }).catch(error => {
+                    console.log(error);
+                    alert("Error al agregar");
+                })
+            }else{
+                alert("Coloque un valor mayor a 0");
+            }
         }
         this.modificarBitacora = ()=>{
-            controlBitacora.modificarBitacora(this.state.Form).then(response=>{
-                console.log(response);
-                alert("Bitacora actualizada correctamente");
-                window.location.reload();
-            }).catch(error => {
-                console.log(error);
-                alert("Error al registrar");
-            })
+            let validacion = validarFormulario(this.state.Form);
+            if(validacion == true){
+                controlBitacora.modificarBitacora(this.state.Form).then(response=>{
+                    console.log(response);
+                    alert("Bitacora actualizada correctamente");
+                    window.location.reload();
+                }).catch(error => {
+                    console.log(error);
+                    alert("Error al registrar");
+                })
+            }else{
+                alert("Coloque un valor mayor a 0");
+            }
         }
         this.guardar = ()=>{
             console.log(this.state.Form);

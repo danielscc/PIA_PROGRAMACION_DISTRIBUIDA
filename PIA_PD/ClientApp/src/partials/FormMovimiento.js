@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { Component } from 'react';
 import { Button, Form, FormGroup, Label, Input, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import controlMovimiento from '../logic/Movimiento';
 import bitacoraControl from '../logic/Bitacora';
@@ -48,13 +48,13 @@ export default class FormUser extends Component{
                 // lista.sort((a, b)=>{
                 //         return b.fecRegistro - a.fecRegistro;
                 //     })
-                    }).catch(error => {
-                alert(error);
+                }).catch(error => {
+                    alert(error);
             });
         }
         this.registrarMovimiento = ()=>{
-            if (this.state.Form.pUnitario == 0) {
-                alert("Intente más tarde");
+            if (this.state.Form.pUnitario == 0 || this.state.Form.cantDolares <= 0 || this.state.Form.pago <= 0 || this.state.Form.pago < this.state.Form.costoTotal) {
+                alert("Solo valores mayores a cero y positivos");
             }else{
                 controlMovimiento.registrarMovimiento(this.state.Form).then(response=>{
                     console.log(response);

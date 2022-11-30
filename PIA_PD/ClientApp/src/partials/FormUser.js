@@ -2,6 +2,16 @@ import React, { Component } from 'react';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import controlUsuario from '../logic/Usuario';
 
+function validarFormulario(objeto){
+    let valores = Object.values(objeto);
+    for(let value of valores){
+        if(value.length < 3){
+            return false;
+        }
+    }
+    return true;
+}
+
 export default class FormUser extends Component{
     static displayName = FormUser.name;
     constructor (props) {
@@ -20,24 +30,34 @@ export default class FormUser extends Component{
             this.setState({Form:{...this.state.Form, [e.target.name]: e.target.value} })
         }
         this.registrarUsuario = ()=>{
-            controlUsuario.registrarUsuario(this.state.Form).then(response=>{
-                console.log(response);
-                alert("Usuario registrado correctamente");
-                window.location.reload();
-            }).catch(error => {
-                console.log(error);
-                alert("Error al registrar");
-            })
+            let validacion = validarFormulario(this.state.Form);
+            if(validacion == true){
+                controlUsuario.registrarUsuario(this.state.Form).then(response=>{
+                    console.log(response);
+                    alert("Usuario registrado correctamente");
+                    window.location.reload();
+                }).catch(error => {
+                    console.log(error);
+                    alert("Error al registrar");
+                })
+            }else{
+                alert("Rellene todos los datos correctamente");
+            }
         }
         this.editarUsuario = ()=>{
-            controlUsuario.editarUsuario(this.state.Form).then(response=>{
-                console.log(response);
-                alert("Usuario registrado correctamente");
-                window.location.reload();
-            }).catch(error => {
-                console.log(error);
-                alert("Error al registrar");
-            })
+            let validacion = validarFormulario(this.state.Form);
+            if(validacion == true){
+                controlUsuario.editarUsuario(this.state.Form).then(response=>{
+                    console.log(response);
+                    alert("Usuario registrado correctamente");
+                    window.location.reload();
+                }).catch(error => {
+                    console.log(error);
+                    alert("Error al registrar");
+                })
+            }else{
+                alert("Rellene todos los datos correctamente");
+            }
         }
         this.guardar = ()=>{
             if(this.state.Form.idUsuario == 0){

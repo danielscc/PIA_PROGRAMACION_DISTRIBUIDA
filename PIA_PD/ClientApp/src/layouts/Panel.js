@@ -13,7 +13,7 @@ export default function Panel(){
                 <Route path='usuarios' element={<TablaUsuarios />} />
                 <Route path='bitacora' element={<TablaBitacora />} />
                 <Route path='movimiento' element={<TablaMovimiento />} />
-                <Route path='dashboard' element={<Dashboard />} />
+                <Route path='dashboard/*' element={<Dashboard />} />
             </Routes>
         </div>
     );
