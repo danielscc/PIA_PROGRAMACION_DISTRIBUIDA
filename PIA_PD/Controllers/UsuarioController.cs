@@ -24,12 +24,16 @@ namespace CRUDReact.Controllers
         {
             List<USUARIO> lstUsuario = BLL_Usuario.LoginId(Cadena, Usuario);
 
-            Dictionary<string, int> IdUsuario = new Dictionary<string, int>();
-            IdUsuario.Add("IdUsuario", lstUsuario[0].IdUsuario);
+            var dpParametros = new
+            {
+                IdUsuario = lstUsuario[0].IdUsuario,
+                IsActivo = lstUsuario[0].IsActivo
+            };
+
 
             if (lstUsuario.Count > 0)
             {
-                return StatusCode(StatusCodes.Status200OK, IdUsuario);
+                return StatusCode(StatusCodes.Status200OK, dpParametros);
             }
             else
             {
