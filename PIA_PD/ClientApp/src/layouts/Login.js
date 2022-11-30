@@ -24,7 +24,7 @@ export default class Login extends Component{
                 controlUsuario.login(this.state).then(response => {
                     console.log(response.data)
                     if(response.data.IdUsuario != 0 ){
-                        if(response.data.IsActivo == 1){
+                        if(response.data.isActivo == true){
                             localStorage.IdUsuario = response.data.IdUsuario;
                             // localStorage.clear();
                             window.location.href = "/panel/usuarios";
