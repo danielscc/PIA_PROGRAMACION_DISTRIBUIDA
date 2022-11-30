@@ -61,9 +61,9 @@ export default class TablaUsuarios extends Component{
     }
     render(){
         return(
-
+            <div className='maincontainer bg-success bg-gradient'>
             <div className="container text-center">
-                <div class="table-responsive">
+                <div className="table-responsive py-4">
                     <div className='table-wrapper'>
                         <div className="table-title">
                             <div className="row">
@@ -94,6 +94,7 @@ export default class TablaUsuarios extends Component{
                         </div>
                     </div>
                 </div>
+            </div>
 
 
                 <Modal isOpen={this.state.modalCrear}>
