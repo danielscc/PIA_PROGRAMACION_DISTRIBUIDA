@@ -14,17 +14,18 @@ namespace BLL
 
             var dpParametros = new
             {
-                    Usuario = Usuario.Usuario,
-                    Contra = Usuario.Contra
+                Usuario = Usuario.Usuario,
+                Contra = Usuario.Contra
             };
 
             DataTable Dt = Contexto.Funcion_StoreDB(P_Cadena, "spLoginId", dpParametros);
 
             lstUsuario = (from item in Dt.AsEnumerable()
-                        select new USUARIO
-                        {
-                            IdUsuario = item.Field<int>("IdUsuario")
-                        }
+                          select new USUARIO
+                          {
+                              IdUsuario = item.Field<int>("IdUsuario"),
+                              IsActivo = item.Field<bool>("IsActivo")
+                          }
                             ).ToList<USUARIO>();
 
             return lstUsuario;
