@@ -31,47 +31,56 @@ export default class Login extends Component{
     }
     render(){
         return(
-                <div>
-                    <section class="vh-100">
-                    <div class="container py-5 h-100">
-                        <div class="row d-flex justify-content-center align-items-center h-100">
-                        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-                            <div class="card shadow-2-strong">
-                            <div class="card-body p-5 text-center">
-                                <h3 class="mb-5">Log in</h3>
+                <div className="bg-primary bg-gradient">
+                    <section className="vh-100">
+                    <div className="container py-5 h-100">
+                        <div className="row d-flex justify-content-center align-items-center h-100">
+                        <div className="col-12 col-md-8 col-lg-6 col-xl-5">
+                            <div className="card shadow-2-strong">
+                            <div className="card-body p-5 text-center">
+                                <h3 className="mb-5">Ingresar al sistema</h3>
                                 <Form>
                                     <FormGroup>
-                                        <Input
-                                        id="Usuario"
-                                        name="Usuario"
-                                        placeholder="nombreusuario2131"
-                                        className="form-control form-control-lg mb-2"
-                                        type="text"
-                                        value={this.state.Usuario}
-                                        onChange={this.handleChange}
-                                        required
-                                        />
+                                        <div className='input-group mb-2'>
+                                        <span class="input-group-text" id="basic-addon1"><i class="bi bi-person-fill"></i></span>
+                                            <Input
+                                            id="Usuario"
+                                            name="Usuario"
+                                            placeholder="username"
+                                            className="form-control form-control-lg"
+                                            type="text"
+                                            value={this.state.Usuario}
+                                            onChange={this.handleChange}
+                                            required
+                                            />
+                                        </div>
                                         <Label for="Usuario" className="form-label">
                                         Nombre de usuario
                                         </Label>
                                     </FormGroup>
                                     <FormGroup>
-                                        <Input
-                                        id="Contra"
-                                        name="Contra"
-                                        placeholder="********"
-                                        className="form-control form-control-lg mb-2"
-                                        type="password"
-                                        value={this.state.Contra}
-                                        onChange={this.handleChange}
-                                        required
-                                        />
+                                        <div class="input-group mb-2">
+                                        <span class="input-group-text" id="basic-addon1"><i class="bi bi-exclamation-circle-fill"></i></span>
+                                            <Input
+                                            id="Contra"
+                                            name="Contra"
+                                            placeholder="********"
+                                            className="form-control form-control-lg"
+                                            type="password"
+                                            value={this.state.Contra}
+                                            onChange={this.handleChange}
+                                            required
+                                            />
+                                        </div>
                                         <Label for="Contra" className="form-label">
                                         Contraseña
                                         </Label>
                                     </FormGroup>
-                                    <Button onClick={this.loginUsuario}  className="btn btn-primary btn-lg btn-block">
-                                        Ingresar
+                                    <Button onClick={this.loginUsuario}  className="btn btn-success btn-lg btn-block">
+                                        Ingresar <i class="bi bi-box-arrow-in-right"></i>
+                                    </Button>
+                                    <Button className="btn btn-primary btn-lg btn-block ms-3">
+                                        Registrar <i class="bi bi-pencil-square"></i>
                                     </Button>
                                     </Form>
                             </div>

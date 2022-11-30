@@ -6,6 +6,7 @@
 
 html {
   font-size: 14px;
+
 }
 @media (min-width: 768px) {
   html {
@@ -13,6 +14,13 @@ html {
   }
 }
 
+.navbar {
+  background: #232528;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 18px;
+}
+
 .box-shadow {
   box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }
+

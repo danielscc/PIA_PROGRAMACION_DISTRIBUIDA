@@ -24,22 +24,25 @@ export default class NavMenu extends Component {
   render() {
     return (
       <header>
-        <Navbar className="navbar-expand-sm navbar-toggleable-sm ng-white border-bottom box-shadow mb-3" container light>
-          <NavbarBrand tag={Link} to="/">PIA_PD</NavbarBrand>
+        <Navbar className="navbar-expand-sm navbar-toggleable-sm ng-white border border-dark box-shadow py-3" container dark>
+          <NavbarBrand tag={Link} to="/"><strong>Sistema compra y venta dolares</strong></NavbarBrand>
           <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
           <Collapse className="d-sm-inline-flex flex-sm-row-reverse" isOpen={!this.state.collapsed} navbar>
             <ul className="navbar-nav flex-grow">
               <NavItem>
-                <NavLink tag={Link} className="text-dark" to="usuarios">Usuarios</NavLink>
+                <NavLink tag={Link} className="text-white" to="usuarios">Usuarios<i className="bi bi-people-fill m-1"></i></NavLink>
               </NavItem>
               <NavItem>
-                <NavLink tag={Link} className="text-dark" to="bitacora">Bitacora</NavLink>
+                <NavLink tag={Link} className="text-white" to="bitacora">Bitacora<i className="bi bi-table m-1"></i></NavLink>
               </NavItem>
               <NavItem>
-                <NavLink tag={Link} className="text-dark" to="movimiento">Compra/Venta</NavLink>
+                <NavLink tag={Link} className="text-white" to="movimiento">Compra-Venta<i className="bi bi-currency-exchange m-1"></i></NavLink>
               </NavItem>
               <NavItem>
-                <NavLink tag={Link} className="text-dark" to="dashboard">Dashboard</NavLink>
+                <NavLink tag={Link} className="text-white" to="dashboard">Dashboard<i className="bi bi-bar-chart-line-fill m-1"></i></NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink tag={Link} className="text-white" to="/">Cerrar sesión<i class="bi bi-door-closed-fill m-1"></i></NavLink>
               </NavItem>
             </ul>
           </Collapse>
