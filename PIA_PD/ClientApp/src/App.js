@@ -4,6 +4,7 @@ import { Route, Routes } from 'react-router-dom';
 // import { Layout } from './components/Layout';
 import Login from './layouts/Login';
 import Panel from './layouts/Panel';
+import Registro from './layouts/Registro';
 import './custom.css';
 
 export default class App extends Component {
@@ -15,6 +16,7 @@ export default class App extends Component {
         <Routes>
           <Route path='/' element={<Login/ >} />
           <Route path='/panel/*' element={<Panel/ >} />
+          <Route path='/registro' element={<Registro/ >} />
         </Routes>
       </>
     );

@@ -19,7 +19,9 @@ export default class FormBitacora extends Component{
                 idBitacora : 0,
                 idTipoMovimiento : 1,
                 monto : 0
-            }
+            },
+            Fecha_compra : undefined,
+            Fecha_venta : undefined
         }
         this.handleChange = (e) => {
             this.setState({Form:{...this.state.Form, [e.target.name]: e.target.value} })
@@ -27,6 +29,7 @@ export default class FormBitacora extends Component{
         this.agregarBitacora = ()=>{
             let validacion = validarFormulario(this.state.Form)
             if(validacion == true){
+
                 controlBitacora.agregarBitacora(this.state.Form).then(response=>{
                     console.log(response);
                     alert("Agregado a bitacora correctamente");
@@ -60,7 +63,6 @@ export default class FormBitacora extends Component{
             if(this.state.Form.idBitacora == 0){
                 this.agregarBitacora();
             }else{
-                console.log("Si entro");
                 this.modificarBitacora();
             }
         }
@@ -84,7 +86,7 @@ export default class FormBitacora extends Component{
                     </FormGroup>
                     <FormGroup>
                         <Label for="monto">Monto</Label>
-                        <Input id="monto" name="monto" placeholder="23.51" type="number"
+                        <Input id="monto" name="monto" placeholder="$0" type="number" step="0.01"
                         value={this.state.Form.monto} onChange={this.handleChange}/>
                     </FormGroup>
                     <div className='d-flex justify-content-center py-2'> 

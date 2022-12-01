@@ -53,8 +53,10 @@ export default class FormUser extends Component{
             });
         }
         this.registrarMovimiento = ()=>{
-            if (this.state.Form.pUnitario == 0 || this.state.Form.cantDolares <= 0 || this.state.Form.pago <= 0 || this.state.Form.pago < this.state.Form.costoTotal) {
+            if (this.state.Form.pUnitario == 0 || this.state.Form.cantDolares <= 0 || this.state.Form.pago <= 0) {
                 alert("Solo valores mayores a cero y positivos");
+            }else if(this.state.Form.pago < this.state.Form.costoTotal){
+                alert("Su pago es menor al requerido");
             }else{
                 controlMovimiento.registrarMovimiento(this.state.Form).then(response=>{
                     console.log(response);
@@ -101,7 +103,7 @@ export default class FormUser extends Component{
                     </FormGroup>
                     <FormGroup>
                         <Label for="cantDolares">Cantidad de dolares</Label>
-                        <Input id="cantDolares" name="cantDolares" placeholder="30" type="number"
+                        <Input id="cantDolares" name="cantDolares" placeholder="30" type="number" min="1" max="1000000" required step="0.01"
                         value={this.state.Form.cantDolares} onChange={this.handleChange}/>
                     </FormGroup>
                     <FormGroup>
@@ -116,7 +118,7 @@ export default class FormUser extends Component{
                     </FormGroup>
                     <FormGroup>
                         <Label for="pago">Pago</Label>
-                        <Input id="pago" name="pago" placeholder="3600" type="number"
+                        <Input id="pago" name="pago" placeholder="3600" type="number" min="1" required step="0.01"
                         value={this.state.Form.pago} onChange={this.handleChange}/>
                     </FormGroup>
                     <FormGroup>

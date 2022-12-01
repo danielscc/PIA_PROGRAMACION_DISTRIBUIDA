@@ -25,7 +25,7 @@ export default class Login extends Component{
                     console.log(response.data)
                     if(response.data.IdUsuario != 0 ){
                         if(response.data.isActivo == true){
-                            localStorage.IdUsuario = response.data.IdUsuario;
+                            localStorage.IdUsuario = response.data.idUsuario;
                             // localStorage.clear();
                             window.location.href = "/panel/usuarios";
                         }else{
@@ -39,6 +39,9 @@ export default class Login extends Component{
                     alert("Error al registrar");
                 });
             }
+        }
+        this.registro = ()=>{
+            window.location.href = "/registro";
         }
     }
     render(){
@@ -91,7 +94,7 @@ export default class Login extends Component{
                                     <Button onClick={this.loginUsuario}  className="btn btn-success btn-lg btn-block">
                                         Ingresar <i class="bi bi-box-arrow-in-right"></i>
                                     </Button>
-                                    <Button className="btn btn-primary btn-lg btn-block ms-3">
+                                    <Button onClick={this.registro} className="btn btn-primary btn-lg btn-block ms-3">
                                         Registrar <i class="bi bi-pencil-square"></i>
                                     </Button>
                                     </Form>
