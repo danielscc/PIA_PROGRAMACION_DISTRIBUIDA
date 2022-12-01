@@ -155,7 +155,7 @@ class CrearRegistro extends Component{
                 return <tr key={usuario.idUsuario}>
                             <td>{usuario.nombre}</td>
                             <td>{usuario.aPaterno + " " + usuario.aMaterno}</td>
-                            <td>{usuario.contra}</td>
+                            <td>{new Date(usuario.fecRegistro).toLocaleDateString()}</td>
                             <td>{usuario.usuario}</td>
                             <td>{(usuario.isActivo==true)?"Activo":"Inactivo"}</td>
                             <td><Button onClick={()=>this.props.borrar(usuario)} className='btn btn-danger me-2'>Borrar</Button><Button onClick={()=>this.props.editar(usuario)} className="btn btn-primary">Editar</Button></td>

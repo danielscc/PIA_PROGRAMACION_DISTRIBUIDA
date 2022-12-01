@@ -27,11 +27,12 @@ export default class Login extends Component {
             console.log(response.data);
             if (response.data.IdUsuario != 0) {
               if (response.data.isActivo == true) {
+                localStorage.Usuario = this.state.Usuario;
                 localStorage.IdUsuario = response.data.idUsuario;
                 // localStorage.clear();
                 window.location.href = "/panel/landing";
               } else {
-                alert("Cuenta suspendida");
+                alert("Cuenta no disponible");
               }
             } else {
               alert("El usuario no existe");

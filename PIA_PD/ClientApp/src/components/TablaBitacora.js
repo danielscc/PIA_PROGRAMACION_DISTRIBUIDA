@@ -16,11 +16,18 @@ export default class TablaBitacora extends Component{
             },
             modalCrear : false,
             modalEditar : false,
+            HOY : new Date(Date.now()).toLocaleDateString(),
+            Fecha_venta : undefined,
+            Fecha_compra : undefined
         }
         this.cargarDatos = () => {
             bitacoraControl.listaBitacoras().then(response => {
                 console.log(response.data);
-                this.setState({ Lista: response.data });
+                if (response.data == undefined) {
+                    alert("Tabla vacia");
+                }else{
+                    this.setState({ Lista: response.data });
+                }
             }).catch(error => {
                 alert(error);
             });

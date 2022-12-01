@@ -31,11 +31,8 @@ export default class FormBitacora extends Component{
             if(validacion == true){
 
                 controlBitacora.agregarBitacora(this.state.Form).then(response=>{
-                    console.log(response);
-                    alert("Agregado a bitacora correctamente");
                     window.location.reload();
                 }).catch(error => {
-                    console.log(error);
                     alert("Error al agregar");
                 })
             }else{
@@ -50,7 +47,6 @@ export default class FormBitacora extends Component{
                     alert("Bitacora actualizada correctamente");
                     window.location.reload();
                 }).catch(error => {
-                    console.log(error);
                     alert("Error al registrar");
                 })
             }else{
@@ -58,8 +54,6 @@ export default class FormBitacora extends Component{
             }
         }
         this.guardar = ()=>{
-            console.log(this.state.Form);
-            console.log(this.state.Form.idTipoMovimiento);
             if(this.state.Form.idBitacora == 0){
                 this.agregarBitacora();
             }else{
@@ -68,7 +62,6 @@ export default class FormBitacora extends Component{
         }
     }
     componentDidMount() {
-        console.log(this.props.objeto);
         (this.props.objeto != undefined)?this.setState({Form:this.props.objeto}):this.setState({Form:this.state.Form});
         const tipoMovimiento = document.getElementById("idTipoMovimiento");
         (this.props.objeto != undefined)?tipoMovimiento.disabled = true:tipoMovimiento.disabled = false;

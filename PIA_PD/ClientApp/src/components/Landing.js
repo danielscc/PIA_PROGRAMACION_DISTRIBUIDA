@@ -19,7 +19,7 @@ export default class Landing extends Component{
             <div className='maincontainer-0'>
                 <div className="d-flex justify-content-center py-5">
                     <div className="d-flex justify-content-center flex-column me-5">
-                            <h1>Bienvenido <span className='text-success'>(usuario)</span></h1>
+                            <h1>Bienvenido <span className='text-success'>{localStorage.Usuario}</span></h1>
                             <p>En este sistema podras hacer compras y ventas de dolares, crear una bitacora <br></br>con los precios historicos, además de generar reporte de graficos dinamicos.</p>
                     </div>
                     <div class="">

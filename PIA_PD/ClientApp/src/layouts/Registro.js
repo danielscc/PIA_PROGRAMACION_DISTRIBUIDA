@@ -53,6 +53,9 @@ export default class Registro extends Component {
         alert("Rellene todos los datos correctamente");
       }
     };
+    this.cancelar = () => {
+      window.location.href = "/";
+    }
     this.guardar = () => {
       this.registrarUsuario();
     };
@@ -187,7 +190,7 @@ export default class Registro extends Component {
                           >
                             Guardar
                           </Button>
-                          <Button className="btn btn-warning">Cancelar</Button>
+                          <Button onClick={this.cancelar} className="btn btn-warning">Cancelar</Button>
                         </div>
                       </Form>
                     </div>
