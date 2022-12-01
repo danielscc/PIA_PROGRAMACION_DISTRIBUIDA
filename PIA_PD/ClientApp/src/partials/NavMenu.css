@@ -14,10 +14,26 @@ html {
   }
 }
 
+
+.navbar-dark .navbar-nav .nav-link {
+  color: white
+
+}
+
+.navh:hover {
+  color: #4CAF50 !important;
+
+}
+.navhred:hover {
+  color: red !important;
+
+}
+
+
 .navbar {
-  background: #232528;
-	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 18px;
+  background: #212529;
+	font-family: sans-serif;
+  font-size: 1rem;
 }
 
 .box-shadow {

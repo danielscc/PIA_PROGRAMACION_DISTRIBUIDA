@@ -24,25 +24,25 @@ export default class NavMenu extends Component {
   render() {
     return (
       <header>
-        <Navbar className="navbar-expand-sm navbar-toggleable-sm ng-white border border-dark box-shadow py-3" container dark>
-          <NavbarBrand tag={Link} to="/"><strong>Sistema compra y venta dolares</strong></NavbarBrand>
+        <Navbar className="navbar-expand-sm navbar-toggleable-sm ng-white border border-dark box-shadow py" container dark>
+          <NavbarBrand tag={Link} to="landing"><div className=""><img className="ico" src={require('./../assets/img/dolar.png')} /></div></NavbarBrand>
           <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
           <Collapse className="d-sm-inline-flex flex-sm-row-reverse" isOpen={!this.state.collapsed} navbar>
             <ul className="navbar-nav flex-grow">
-              <NavItem>
-                <NavLink tag={Link} className="text-white" to="usuarios">Usuarios<i className="bi bi-people-fill m-1"></i></NavLink>
+              <NavItem >
+                <NavLink tag={Link} className="navh" to="usuarios">Usuarios<i className="bi bi-people-fill m-1"></i></NavLink>
               </NavItem>
               <NavItem>
-                <NavLink tag={Link} className="text-white" to="bitacora">Bitacora<i className="bi bi-table m-1"></i></NavLink>
+                <NavLink tag={Link} className="navh" to="bitacora">Bitacora<i className="bi bi-table m-1"></i></NavLink>
               </NavItem>
               <NavItem>
-                <NavLink tag={Link} className="text-white" to="movimiento">Compra-Venta<i className="bi bi-currency-exchange m-1"></i></NavLink>
+                <NavLink tag={Link} className="navh" to="movimiento">Compra-Venta<i className="bi bi-currency-exchange m-1"></i></NavLink>
               </NavItem>
               <NavItem>
-                <NavLink tag={Link} className="text-white" to="dashboard">Dashboard<i className="bi bi-bar-chart-line-fill m-1"></i></NavLink>
+                <NavLink tag={Link} className="navh" to="dashboard">Dashboard<i className="bi bi-bar-chart-line-fill m-1"></i></NavLink>
               </NavItem>
               <NavItem>
-                <NavLink tag={Link} className="text-white" to="/">Cerrar sesión<i class="bi bi-door-closed-fill m-1"></i></NavLink>
+                <NavLink tag={Link} className="navhred" to="/">Log Out<i class="bi bi-door-closed-fill m-1"></i></NavLink>
               </NavItem>
             </ul>
           </Collapse>

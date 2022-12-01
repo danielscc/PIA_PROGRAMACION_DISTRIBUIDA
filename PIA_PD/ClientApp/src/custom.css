@@ -1,11 +1,45 @@
 /* Provide sufficient contrast against white background */
 @import '~bootstrap-icons/font/bootstrap-icons';
 
-.maincontainer {
-	/* border: #0366d6; */
+.maincontainer-1{
+	background-color: #00ABB3;
 	height: 100vh;
-	
 }
+.maincontainer-2{
+	background-color: #9ED8DB;
+	height: 100vh;
+}
+.maincontainer-3{
+	background-color: #266DD3;
+	height: 100vh;
+}
+.maincontainer-0{
+	background-color: #22252a;
+	height: 100vh;
+	color: white;
+}
+
+.maincontainer-0 h1 {
+	font-size: 48px;
+	font-weight: 800;
+
+}
+
+.maincontainer-0 p {
+	font-size: 18px;
+
+}
+
+
+.ico {
+	width: 40px;
+	height: 40px;
+ }
+
+.ico2 {
+	width: 400px;
+	height: 400px;
+ }
 
 a {
   color: #0366d6;
@@ -20,6 +54,10 @@ code {
   background-color: #1b6ec2;
   border-color: #1861ac;
 }
+
+
+
+
 
 /*TABLA */
 

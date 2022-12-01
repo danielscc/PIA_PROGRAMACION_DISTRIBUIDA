@@ -60,7 +60,7 @@ export default class FormUser extends Component{
             }else{
                 controlMovimiento.registrarMovimiento(this.state.Form).then(response=>{
                     console.log(response);
-                    alert("Usuario registrado correctamente");
+                    alert("Tu movimiento ha sido registrado correctamente");
                     window.location.reload()
                 }).catch(error => {
                     console.log(error);

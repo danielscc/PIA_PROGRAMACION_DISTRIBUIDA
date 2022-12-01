@@ -65,7 +65,7 @@ export default class TablaMovimiento extends Component {
 
     render() {
         return (
-            <div className='maincontainer bg-success bg-gradient'>
+            <div className='maincontainer-3'>
 
                 <div className="container text-center">
                     <div className="table-responsive py-4">

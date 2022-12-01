@@ -61,7 +61,7 @@ export default class TablaUsuarios extends Component{
     }
     render(){
         return(
-            <div className='maincontainer bg-success bg-gradient'>
+            <div className='maincontainer-1'>
             <div className="container text-center">
                 <div className="table-responsive py-4">
                     <div className='table-wrapper'>
@@ -120,13 +120,17 @@ export default class TablaUsuarios extends Component{
                     </ModalFooter>
                 </Modal>
                 <Modal isOpen={this.state.modalEliminar}>
-                    <ModalHeader>Eliminar</ModalHeader>
+                    <div className='d-flex justify-content-center'>
+                        <ModalHeader>Eliminar usuario</ModalHeader>
+                    </div>
                     <ModalBody>
-                        <h2>Seguro que quiere borrar?</h2>
-                        <p>{this.state.Form.nombre}</p>
-                        <p>{this.state.Form.idUsuario}</p>
+                        <h5 className='text-center'>¿Esta seguro que quiere borrar el siguiente usuario?</h5>
+                        <div>
+                            <p className='d-flex justify-content-center my-5'><i class="bi bi-person-circle me-2"></i>Usuario: {this.state.Form.nombre}</p>
+                        </div>
+                        {/* <p>{this.state.Form.idUsuario}</p> */}
                     </ModalBody>
-                    <ModalFooter>
+                    <ModalFooter className='d-flex justify-content-center'>
                     <Button onClick={this.bajaUsuario} className='btn btn-danger'>
                         Borrar
                     </Button>{' '}

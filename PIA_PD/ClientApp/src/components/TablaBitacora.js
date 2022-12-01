@@ -39,7 +39,7 @@ export default class TablaBitacora extends Component{
 
     render(){
         return(
-            <div className="maincontainer bg-primary bg-gradient ">
+            <div className="maincontainer-2">
                 <div className="container text-center">
                     <div class="table-responsive py-4">
                         <div className='table-wrapper'>
